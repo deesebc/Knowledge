@@ -10,20 +10,18 @@ import org.springframework.web.bind.annotation.RestController;
 import es.home.example.knowledge.entity.Book;
 import es.home.example.knowledge.repository.BookDao;
 
-@RestController
+@RestController("/book")
 public class BookRestController {
-
 	@Autowired
 	private BookDao repository;
 
-	@GetMapping("/book")
+	@GetMapping
 	public List<Book> findAll() {
 		return repository.findAll();
 	}
 
-	@GetMapping("/book/{id}")
+	@GetMapping("/{id}")
 	public Book findById(@PathVariable("id") final Integer id) {
 		return repository.findOne(id);
 	}
-
 }
